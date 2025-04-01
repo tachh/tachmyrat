@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Restaurant;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Reservation;
 
 class DatabaseSeeder extends Seeder
 {

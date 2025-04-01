@@ -12,9 +12,11 @@ class Restaurant extends Model
     /** @use HasFactory<\Database\Factories\RestaurantFactory> */
     use HasFactory;
 
+    protected $guarded = ['id'];
+
     public function products(): HasMany
     {
-        return $this->hasMany(Product::class);
+        return $this->hasMany(Product::class, 'restaurant_id');
     }
 
 

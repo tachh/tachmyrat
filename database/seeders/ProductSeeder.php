@@ -18,12 +18,27 @@ class ProductSeeder extends Seeder
         $objs = ['Manty', 'Tamdyrlama', 'Burger', 'Mohito', 'Cola', 'Coffee'];
 
         foreach ($objs as $obj) {
+            $restaurant = Restaurant::inRandomOrder()->first(); // Restaurant ID-ini almak
+
+            // Restaurant ýok bolsa, täze birini döretmek
+            if (!$restaurant) {
+                $restaurant = Restaurant::factory()->create();
+            }
+
+            $category = Category::inRandomOrder()->first(); // Category ID-ini almak
+
+            // Category ýok bolsa, täze birini döretmek
+            if (!$category) {
+                $category = Category::factory()->create();
+            }
+
             Product::create([
                 'name' => $obj,
-                'price' => rand(1,100),
-                'restaurant_id' => Restaurant::inRandomOrder()->value('id'),
-                'category_id' => Category::inRandomOrder()->value('id'),
-                ]);
+                'price' => rand(1, 100),
+                'restaurant_id' => $restaurant->id, // Dogry restaurant ID-ini ulanylýar
+                'category_id' => $category->id, // Dogry category ID-ini ulanylýar
+            ]);
         }
+
     }
 }

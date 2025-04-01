@@ -2,6 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\Restaurant;
+use App\Models\Reservation;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +20,10 @@ class ReservationFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'user_id' => User::inRandomOrder()->value('id') ?? User::factory(),
+            'restaurant_id' => Restaurant::inRandomOrder()->value('id') ?? Restaurant::factory(),
+            'reservation_date' => fake()->dateTimeBetween('now', '+1 month'),
+            'guest_count' => fake()->numberBetween(1, 10),
         ];
     }
 }

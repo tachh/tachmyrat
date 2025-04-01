@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Restaurant;
+use App\Models\City;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +19,13 @@ class RestaurantFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => fake()->company(),
+            'address' => fake()->address(),
+            'phone' => fake()->phoneNumber(),
+            'description' => fake()->text(),
+            'city_id' => function () {
+                return City::inRandomOrder()->value('id');
+            },
         ];
     }
 }

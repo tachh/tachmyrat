@@ -23,8 +23,6 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
         ]);
 
-
-
         User::factory()
             ->count(rand(20, 30))
             ->create();

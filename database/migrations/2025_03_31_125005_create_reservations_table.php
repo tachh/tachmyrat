@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->index()->constrained()->cascadeOnDelete();
             $table->foreignId('restaurant_id')->index()->constrained()->cascadeOnDelete();
-            $table->date('date')->nullable();
-            $table->time('time')->nullable();
+            $table->date('date')->default(now());
+            $table->time('time')->default(now());
             $table->dateTime('reservation_date')->nullable();
             $table->integer('guest_count');
             $table->timestamps();

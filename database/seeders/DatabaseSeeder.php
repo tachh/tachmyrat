@@ -7,6 +7,8 @@ use App\Models\Restaurant;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Reservation;
+use App\Models\Product;
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -30,6 +32,10 @@ class DatabaseSeeder extends Seeder
             ->create();
 
         Reservation::factory()
+            ->count(rand(50, 100))
+            ->create();
+
+        Product::factory()
             ->count(rand(50, 100))
             ->create();
 

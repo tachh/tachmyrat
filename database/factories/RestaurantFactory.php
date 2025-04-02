@@ -21,7 +21,6 @@ class RestaurantFactory extends Factory
         return [
             'name' => fake()->company(),
             'address' => fake()->address(),
-            'phone' => fake()->phoneNumber(),
             'description' => fake()->text(),
             'city_id' => function () {
                 return City::inRandomOrder()->value('id');

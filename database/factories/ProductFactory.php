@@ -2,15 +2,12 @@
 
 namespace Database\Factories;
 
-use App\Models\Restaurant;
-use App\Models\Reservation;
-use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Reservation>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Product>
  */
-class ReservationFactory extends Factory
+class ProductFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -20,9 +17,11 @@ class ReservationFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::inRandomOrder()->value('id') ?? User::factory(),
+            'name' => fake()->food(),
+            'price' => rand(1, 100),
             'restaurant_id' => Restaurant::inRandomOrder()->value('id') ?? Restaurant::factory(),
-            'guest_count' => fake()->numberBetween(1, 10),
+            'category_id' => Category::inRandomOrder()->value('id') ?? Category::factory(),
+            'description' => fake()->sentence(1, 3),
         ];
     }
 }
